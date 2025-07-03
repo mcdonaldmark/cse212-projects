@@ -8,7 +8,7 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
   
     /// Step 1: Pass on the double array "results" to be an array that goes by "length" for the size of the multiples. 
-    /// Step 2: Create the condition with a starting value of 1 that increments until it reaches the array length (length being specified by the user)
+    /// Step 2: Create the condition with a starting value of 1 that increments until it reaches the array length (length being specified by the user). We won't start with 0 in the multiple list.
     /// Step 3: With the iterator set at 1, I cannot use the results[1] as that will indicate the incorrect position so I needed to do result[i - 1] so that the array starts at index 0.
     /// Step 4: Set the results[i - 1] (index) to equal the number used for the multiple and multiply it by the iterator (i)
     /// Step 5: Return the result of the multiple array.
