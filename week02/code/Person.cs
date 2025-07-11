@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 public class Person
 {
     public readonly string Name;
