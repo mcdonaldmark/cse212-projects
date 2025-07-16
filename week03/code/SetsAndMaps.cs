@@ -28,7 +28,6 @@ public static class SetsAndMaps
         {
             if (word.Length != 2) continue;
 
-            // Skip palindromic words like "aa"
             if (word[0] == word[1]) continue;
 
             string reversed = new string(new[] { word[1], word[0] });
