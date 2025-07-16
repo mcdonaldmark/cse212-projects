@@ -21,7 +21,27 @@ public static class SetsAndMaps
     /// <param name="words">An array of 2-character words (lowercase, no duplicates)</param>
     public static string[] FindPairs(string[] words)
     {
-        // TODO Problem 1 - ADD YOUR CODE HERE
+        var result = new List<string>();
+        var seen = new HashSet<string>();
+
+        foreach (var word in words)
+        {
+            if (word.Length != 2) continue;
+
+            // Skip palindromic words like "aa"
+            if (word[0] == word[1]) continue;
+
+            string reversed = new string(new[] { word[1], word[0] });
+
+            if (seen.Contains(reversed))
+            {
+                result.Add($"{reversed} & {word}");
+            }
+            else
+            {
+                seen.Add(word);
+            }
+        }
         return [];
     }
 
