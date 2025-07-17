@@ -1,4 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
+
 
 public static class SetsAndMaps
 {
@@ -61,9 +65,23 @@ public static class SetsAndMaps
         foreach (var line in File.ReadLines(filename))
         {
             var fields = line.Split(",");
-            // TODO Problem 2 - ADD YOUR CODE HERE
-        }
+            if (fields.Length >= 4)
+            {
+                string degree = fields[3].Trim();
 
+                if (!string.IsNullOrEmpty(degree))
+                {
+                    if (degrees.ContainsKey(degree))
+                    {
+                        degrees[degree]++;
+                    }
+                    else
+                    {
+                        degrees[degree] = 1;
+                    }
+                }
+            }
+        }
         return degrees;
     }
 
@@ -85,8 +103,47 @@ public static class SetsAndMaps
     /// </summary>
     public static bool IsAnagram(string word1, string word2)
     {
-        // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+        {
+            // Remove spaces and convert to lowercase
+            word1 = word1.Replace(" ", "").ToLower();
+            word2 = word2.Replace(" ", "").ToLower();
+
+            // If lengths differ after cleaning, not anagrams
+            if (word1.Length != word2.Length)
+                return false;
+
+            // Create frequency dictionary for word1
+            Dictionary<char, int> freq1 = new Dictionary<char, int>();
+            foreach (char c in word1)
+            {
+                if (freq1.ContainsKey(c))
+                    freq1[c]++;
+                else
+                    freq1[c] = 1;
+            }
+
+            // Create frequency dictionary for word2
+            Dictionary<char, int> freq2 = new Dictionary<char, int>();
+            foreach (char c in word2)
+            {
+                if (freq2.ContainsKey(c))
+                    freq2[c]++;
+                else
+                    freq2[c] = 1;
+            }
+
+            // Compare both dictionaries
+            if (freq1.Count != freq2.Count)
+                return false;
+
+            foreach (var kvp in freq1)
+            {
+                if (!freq2.ContainsKey(kvp.Key) || freq2[kvp.Key] != kvp.Value)
+                    return false;
+            }
+
+            return true;
+        }
     }
 
     /// <summary>
